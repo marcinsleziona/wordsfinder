@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by Marcin on 2015-09-02.
@@ -44,7 +46,7 @@ public class App extends AbstractJavaFxApplicationSupport {
         primaryStage.centerOnScreen();
 
         // load dictonary
-        Dictonary dictonary = loadFile("/polish-win1250.txt");
+        Dictonary dictonary = loadFile("/polish-win1250.zip");
         AnagramService as = new AnagramService();
         wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
 
@@ -59,8 +61,9 @@ public class App extends AbstractJavaFxApplicationSupport {
     private Dictonary loadFile(String spath) throws IOException {
         Dictonary wc = new Dictonary();
         try (InputStream resource = App.class.getResourceAsStream(spath)) {
-            new BufferedReader(new InputStreamReader(resource,
-                    Charset.forName("windows-1250"))).lines().forEach(wc::add);
+            ZipInputStream stream = new ZipInputStream(resource);
+            ZipEntry ze = stream.getNextEntry();
+            new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
         }
         return wc;
     }
