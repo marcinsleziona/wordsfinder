@@ -25,9 +25,6 @@ import java.util.zip.ZipInputStream;
 @SpringBootApplication
 public class App extends AbstractJavaFxApplicationSupport {
 
-    /**
-     * Note that this is configured in application.properties
-     */
     @Value("${app.ui.title}")
     private String windowTitle;
 
