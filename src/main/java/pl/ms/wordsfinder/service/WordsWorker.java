@@ -7,6 +7,7 @@ import java.util.concurrent.Callable;
 /**
  * Created by Marcin on 2015-09-02.
  */
+@Deprecated
 public class WordsWorker implements Callable<HashSet<String>> {
 
     private IWordsService wordsService;
