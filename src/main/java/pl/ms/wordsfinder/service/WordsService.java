@@ -22,10 +22,7 @@ public class WordsService implements IWordsService {
 
     @Override
     public boolean isValid(String word) {
-        if (word == null || word.trim().length() <= 1) {
-            return false;
-        }
-        return !dictonary.getByPrefix3(word).isEmpty();
+        return !(word == null || word.trim().length() <= 1) && !dictonary.getByPrefix3(word).isEmpty();
     }
 
     @Override

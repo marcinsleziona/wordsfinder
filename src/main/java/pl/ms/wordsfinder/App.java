@@ -45,7 +45,7 @@ public class App extends AbstractJavaFxApplicationSupport {
         primaryStage.centerOnScreen();
 
         // load dictonary
-        Dictonary dictonary = loadFile(App.class.getResource("/slowa-win.txt").toURI());
+        Dictonary dictonary = loadFile("/slowa-win.txt");
         AnagramService as = new AnagramService();
         wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
 
@@ -57,9 +57,9 @@ public class App extends AbstractJavaFxApplicationSupport {
         launchApp(App.class, args);
     }
 
-    private Dictonary loadFile(URI spath) throws IOException {
+    private Dictonary loadFile(String spath) throws IOException {
         Dictonary wc = new Dictonary();
-        try (InputStream resource = App.class.getResourceAsStream("/slowa-win.txt")) {
+        try (InputStream resource = App.class.getResourceAsStream(spath)) {
             new BufferedReader(new InputStreamReader(resource,
                     Charset.forName("windows-1250"))).lines().forEach(wc::add);
         }
