@@ -1,8 +1,8 @@
-package pl.ms.wordfinder;
+package pl.ms.wordsfinder;
 
-import pl.ms.wordfinder.service.AnagramService;
-import pl.ms.wordfinder.service.IWordsService;
-import pl.ms.wordfinder.service.WordsService;
+import pl.ms.wordsfinder.service.AnagramService;
+import pl.ms.wordsfinder.service.IWordsService;
+import pl.ms.wordsfinder.service.WordsService;
 
 import java.io.IOException;
 import java.net.URI;

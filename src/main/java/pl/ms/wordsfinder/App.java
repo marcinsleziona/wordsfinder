@@ -1,4 +1,4 @@
-package pl.ms.wordfinder;
+package pl.ms.wordsfinder;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -6,10 +6,10 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pl.ms.wordfinder.service.AnagramService;
-import pl.ms.wordfinder.service.WordsService;
-import pl.ms.wordfinder.service.WordsServiceFacade;
-import pl.ms.wordfinder.view.MainView;
+import pl.ms.wordsfinder.service.AnagramService;
+import pl.ms.wordsfinder.service.WordsService;
+import pl.ms.wordsfinder.service.WordsServiceFacade;
+import pl.ms.wordsfinder.view.MainView;
 
 import java.io.BufferedReader;
 import java.io.IOException;

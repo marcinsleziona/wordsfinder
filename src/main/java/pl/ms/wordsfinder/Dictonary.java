@@ -1,4 +1,4 @@
-package pl.ms.wordfinder;
+package pl.ms.wordsfinder;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class Dictonary {
     private HashMap<Character, HashMap<Integer, HashSet<String>>> words = new HashMap<>();
 
     // Create a key that is the word's letters sorted alphabetically (and forced to one case)
-    // Add the word to the list of wordfinder accessed by the hash key in H
+    // Add the word to the list of wordsfinder accessed by the hash key in H
     private HashMap<Integer, HashMap<String, List<String>>> wordKeys = new HashMap<>();
 
     private Set<Character> letters = new HashSet<>();
@@ -31,7 +31,7 @@ public class Dictonary {
         lwords.put(length, lcwords);
         words.put(c, lwords);
 
-        // add wordfinder for anagrams
+        // add wordsfinder for anagrams
         HashMap<String, List<String>> lwkwords = wordKeys.get(length);
         if (lwkwords == null) {
             lwkwords = new HashMap<>();
@@ -61,7 +61,7 @@ public class Dictonary {
 //     * ostrzeganych - 37
 //     */
 //    private HashSet<String> getByPrefix1(String prefix) {
-//        HashMap<Integer, HashSet<String>> lwords = wordfinder.get(prefix.charAt(0));
+//        HashMap<Integer, HashSet<String>> lwords = wordsfinder.get(prefix.charAt(0));
 //
 //        return lwords
 //                .entrySet()
@@ -78,10 +78,10 @@ public class Dictonary {
 //     * ostrzeganych - 28
 //     */
 //    private HashSet<String> getByPrefix2(String prefix) {
-//        HashMap<Integer, HashSet<String>> lwords = wordfinder.get(prefix.charAt(0));
+//        HashMap<Integer, HashSet<String>> lwords = wordsfinder.get(prefix.charAt(0));
 //
-//        HashSet<String> wordfinder = lwords.entrySet().stream().filter(e -> e.getKey() >= prefix.length()).map(Map.Entry::getValue).flatMap(Set::stream).collect(Collectors.toCollection(HashSet::new));
-//        return wordfinder.stream().filter(e -> e.startsWith(prefix)).collect(Collectors.toCollection(HashSet::new));
+//        HashSet<String> wordsfinder = lwords.entrySet().stream().filter(e -> e.getKey() >= prefix.length()).map(Map.Entry::getValue).flatMap(Set::stream).collect(Collectors.toCollection(HashSet::new));
+//        return wordsfinder.stream().filter(e -> e.startsWith(prefix)).collect(Collectors.toCollection(HashSet::new));
 //    }
 
     /**
@@ -104,7 +104,7 @@ public class Dictonary {
 //     */
 //    private HashSet<String> getByPrefix4(String prefix) {
 //        HashSet<String> ret = new HashSet<>();
-//        HashMap<Integer, HashSet<String>> lwords = wordfinder.get(prefix.charAt(0));
+//        HashMap<Integer, HashSet<String>> lwords = wordsfinder.get(prefix.charAt(0));
 //        for (Map.Entry<Integer, HashSet<String>> entry : lwords.entrySet()) {
 //            if (entry.getKey() < prefix.length()) {
 //                continue;

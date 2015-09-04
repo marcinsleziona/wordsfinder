@@ -1,4 +1,4 @@
-package pl.ms.wordfinder.view;
+package pl.ms.wordsfinder.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.ms.wordfinder.service.WordsServiceFacade;
+import pl.ms.wordsfinder.service.WordsServiceFacade;
 
 import java.util.List;
 import java.util.Map;

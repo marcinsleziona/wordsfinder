@@ -1,4 +1,4 @@
-package pl.ms.wordfinder.service;
+package pl.ms.wordsfinder.service;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,9 +1,9 @@
-package pl.ms.wordfinder;
+package pl.ms.wordsfinder;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pl.ms.wordfinder.service.AnagramService;
+import pl.ms.wordsfinder.service.AnagramService;
 
 /**
  * Created by Marcin on 2015-09-02.

@@ -1,6 +1,6 @@
-package pl.ms.wordfinder.service;
+package pl.ms.wordsfinder.service;
 
-import pl.ms.wordfinder.Dictonary;
+import pl.ms.wordsfinder.Dictonary;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -82,7 +82,7 @@ public class WordsService implements IWordsService {
 //        }
 //
 //        // collect reports
-//        List<String> wordfinder = new ArrayList<>();
+//        List<String> wordsfinder = new ArrayList<>();
 //        for (Future<HashSet<String>> result : results) {
 //            HashSet<String> workReport;
 //            try {
@@ -93,10 +93,10 @@ public class WordsService implements IWordsService {
 //                continue;
 //            }
 //
-//            wordfinder.addAll(workReport);
+//            wordsfinder.addAll(workReport);
 //        }
 //
-//        Set<String> res = wordfinder.stream().sorted().collect(Collectors.toSet());
+//        Set<String> res = wordsfinder.stream().sorted().collect(Collectors.toSet());
 //        List<String> lres = new ArrayList<>(res);
 //        Collections.sort(lres);
 //        return lres;

@@ -1,4 +1,4 @@
-package pl.ms.wordfinder.service;
+package pl.ms.wordsfinder.service;
 
 import org.springframework.stereotype.Component;
 
