@@ -21,7 +21,7 @@ public class Start {
 
         public static void main(String[] args) throws IOException, URISyntaxException {
             Start w = new Start();
-            w.dictonary = w.loadFile(App.class.getResource("/slowa-win.txt").toURI());
+            w.dictonary = w.loadFile(App.class.getResource("/polish-win1250.txt").toURI());
 
             AnagramService as = new AnagramService();
             IWordsService ws = new WordsService(w.dictonary, as);

@@ -15,7 +15,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.nio.charset.Charset;
 
 /**
@@ -45,7 +44,7 @@ public class App extends AbstractJavaFxApplicationSupport {
         primaryStage.centerOnScreen();
 
         // load dictonary
-        Dictonary dictonary = loadFile("/slowa-win.txt");
+        Dictonary dictonary = loadFile("/polish-win1250.txt");
         AnagramService as = new AnagramService();
         wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
 
