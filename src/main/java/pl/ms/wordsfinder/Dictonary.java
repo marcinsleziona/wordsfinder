@@ -90,6 +90,9 @@ public class Dictonary {
     public HashSet<String> getByPrefix3(String prefix) {
         HashSet<String> ret = new HashSet<>();
         HashMap<Integer, HashSet<String>> lwords = words.get(prefix.charAt(0));
+        if(lwords == null) {
+            return ret;
+        }
         for (Map.Entry<Integer, HashSet<String>> entry : lwords.entrySet()) {
             if (entry.getKey() < prefix.length()) {
                 continue;

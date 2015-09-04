@@ -35,7 +35,7 @@ public class MainView extends VBox {
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(5);
         grid.setHgap(5);
-        //grid.setGridLinesVisible(true);
+        grid.setGridLinesVisible(true);
         grid.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setPercentWidth(33);
@@ -51,6 +51,7 @@ public class MainView extends VBox {
         row2.setVgrow(Priority.NEVER);
         RowConstraints row3 = new RowConstraints();
         row3.setVgrow(Priority.ALWAYS);
+        row3.setPrefHeight(500);
         grid.getRowConstraints().addAll(row1, row2, row3);
 
         //Defining the word
@@ -107,6 +108,7 @@ public class MainView extends VBox {
         //Defining the errorMessage
         textArea = new TextArea();
         textArea.setEditable(false);
+        textArea.setWrapText(true);
         GridPane.setConstraints(textArea, 0, 2, 3, 1);
         grid.getChildren().add(textArea);
 
