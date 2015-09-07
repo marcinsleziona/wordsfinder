@@ -10,6 +10,7 @@ import pl.ms.wordsfinder.service.AnagramService;
 import pl.ms.wordsfinder.service.WordsService;
 import pl.ms.wordsfinder.service.WordsServiceFacade;
 import pl.ms.wordsfinder.view.MainView;
+import pl.ms.wordsfinder.view.StartupView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,20 +33,31 @@ public class App extends AbstractJavaFxApplicationSupport {
     private MainView mainView;
 
     @Autowired
+    private StartupView startupView;
+
+    @Autowired
     private WordsServiceFacade wordsServiceFacade;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        // show startup progress, preloaders are fancy but I don't like'em
+        primaryStage.setTitle(windowTitle);
+        primaryStage.setScene(startupView.build());
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+
+        // load dictonary
+        Dictonary dictonary = loadFile("/sjp-20150906.zip");
+        AnagramService as = new AnagramService();
+        wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
+        primaryStage.hide();
+
         primaryStage.setTitle(windowTitle);
         primaryStage.setScene(new Scene(mainView, 640, 480));
         primaryStage.setResizable(true);
         primaryStage.centerOnScreen();
-
-        // load dictonary
-        Dictonary dictonary = loadFile("/polish-win1250.zip");
-        AnagramService as = new AnagramService();
-        wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
 
         // show page
         primaryStage.show();
@@ -60,7 +72,9 @@ public class App extends AbstractJavaFxApplicationSupport {
         try (InputStream resource = App.class.getResourceAsStream(spath)) {
             ZipInputStream stream = new ZipInputStream(resource);
             ZipEntry ze = stream.getNextEntry();
-            new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
+            if(ze.getName().equals("slowa-win.txt")) {
+                new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
+            }
         }
         return wc;
     }

@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /**
@@ -25,7 +26,7 @@ public class Start {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         Start w = new Start();
-        w.dictonary = w.loadFile("/polish-win1250.zip");
+        w.dictonary = w.loadFile("/sjp-20150906.zip");
 
         AnagramService as = new AnagramService();
         IWordsService ws = new WordsService(w.dictonary, as);
@@ -59,8 +60,10 @@ public class Start {
         Dictonary wc = new Dictonary();
         try (InputStream resource = App.class.getResourceAsStream(spath)) {
             ZipInputStream stream = new ZipInputStream(resource);
-            stream.getNextEntry();
-            new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
+            ZipEntry ze = stream.getNextEntry();
+            if(ze.getName().equals("slowa-win.txt")) {
+                new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
+            }
         }
         return wc;
     }
