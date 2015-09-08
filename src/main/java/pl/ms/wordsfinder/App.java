@@ -2,7 +2,6 @@ package pl.ms.wordsfinder;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -40,26 +39,24 @@ public class App extends AbstractJavaFxApplicationSupport {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+//
+//        notifyPreloader(new Preloader.StateChangeNotification(Preloader.StateChangeNotification.Type.BEFORE_INIT));
+        primaryStage.setTitle(windowTitle);
+        primaryStage.centerOnScreen();
 
         // show startup progress, preloaders are fancy but I don't like'em
-        primaryStage.setTitle(windowTitle);
         primaryStage.setScene(startupView.build());
         primaryStage.setResizable(false);
-        primaryStage.centerOnScreen();
         primaryStage.show();
 
-        // load dictonary
         Dictonary dictonary = loadFile("/sjp-20150906.zip");
         AnagramService as = new AnagramService();
         wordsServiceFacade.setWordsService(new WordsService(dictonary, as));
-        primaryStage.hide();
 
-        primaryStage.setTitle(windowTitle);
+//        notifyPreloader(new Preloader.StateChangeNotification(Preloader.StateChangeNotification.Type.BEFORE_START));
+
         primaryStage.setScene(new Scene(mainView, 640, 480));
-        primaryStage.setResizable(true);
         primaryStage.centerOnScreen();
-
-        // show page
         primaryStage.show();
     }
 
@@ -72,7 +69,7 @@ public class App extends AbstractJavaFxApplicationSupport {
         try (InputStream resource = App.class.getResourceAsStream(spath)) {
             ZipInputStream stream = new ZipInputStream(resource);
             ZipEntry ze = stream.getNextEntry();
-            if(ze.getName().equals("slowa-win.txt")) {
+            if (ze.getName().equals("slowa-win.txt")) {
                 new BufferedReader(new InputStreamReader(stream, Charset.forName("windows-1250"))).lines().forEach(wc::add);
             }
         }

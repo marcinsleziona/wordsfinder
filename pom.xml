@@ -34,6 +34,7 @@
         <maven-resources-plugin-version>2.5</maven-resources-plugin-version>
 
         <junit-version>4.12</junit-version>
+        <rxjava-core-version>0.20.7</rxjava-core-version>
     </properties>
 
     <build>
@@ -93,6 +94,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
+        <dependency>
+            <groupId>com.netflix.rxjava</groupId>
+            <artifactId>rxjava-core</artifactId>
+            <version>${rxjava-core-version}</version>
+        </dependency>
+        -->
     </dependencies>
 
 </project>
