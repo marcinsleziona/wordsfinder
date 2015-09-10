@@ -36,16 +36,16 @@ public class StartupView {
         GridPane.setConstraints(initialized, 0, 0, 1, 1);
         grid.getChildren().add(initialized);
 
-        //Defining the bar
-        ProgressBar bar = new ProgressBar();
-        GridPane.setConstraints(bar, 0, 1, 1, 1);
-        bar.setMinWidth(200);
-        grid.getChildren().add(bar);
+//        //Defining the bar
+//        ProgressBar bar = new ProgressBar();
+//        GridPane.setConstraints(bar, 0, 1, 1, 1);
+//        bar.setMinWidth(200);
+//        grid.getChildren().add(bar);
 
         //Defining the pleaseWait
         Label pleaseWait = new Label();
         pleaseWait.setText("Please wait ...");
-        GridPane.setConstraints(pleaseWait, 0, 2, 1, 1);
+        GridPane.setConstraints(pleaseWait, 0, 1, 1, 1);
         grid.getChildren().add(pleaseWait);
 
         return new Scene(grid, 350, 200);
