@@ -1,4 +1,4 @@
-package pl.ms.wordsfinder.view;
+package pl.ms.wordsfinder;
 
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -6,9 +6,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.Reflection;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
@@ -17,7 +14,8 @@ import javafx.stage.Stage;
 /**
  * Created by Marcin on 2015-09-07.
  */
-public class FirstPreloader extends Preloader {
+public class AppPreloader extends Preloader {
+
     private ProgressBar bar;
     private Stage stage;
 
@@ -57,8 +55,13 @@ public class FirstPreloader extends Preloader {
         stage.setScene(createPreloaderScene());
         stage.show();
     }
+    public void handleStateChangeNotification(StateChangeNotification evt) {
+        if (evt.getType() == StateChangeNotification.Type.BEFORE_START) {
+            stage.hide();
+        }
+    }
 
     public static void main(String[] args) {
-        Application.launch(FirstPreloader.class, args);
+        Application.launch(AppPreloader.class, args);
     }
 }
